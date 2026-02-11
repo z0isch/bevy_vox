@@ -5,11 +5,6 @@ fn main() {
     App::new()
         .add_plugins(DefaultPlugins)
         .add_plugins(VoxPlugin { swap_yz: true })
-        .insert_resource(AmbientLight {
-            color: Color::WHITE,
-            brightness: 0.5,
-            affects_lightmapped_meshes: true,
-        })
         .add_systems(Startup, setup)
         .add_systems(Update, rotate_model)
         .run();
@@ -39,6 +34,11 @@ fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
     commands.spawn((
         Camera3d::default(),
         Transform::from_xyz(6.0, -6.0, 6.0).looking_at(Vec3::ZERO, Vec3::Y),
+        AmbientLight {
+            color: Color::WHITE,
+            brightness: 0.5,
+            affects_lightmapped_meshes: true,
+        },
     ));
 }
 
