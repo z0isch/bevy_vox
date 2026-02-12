@@ -112,6 +112,7 @@ async fn load_vox<'a, 'b>(
                             load_context.get_label_handle(palette_label(vox.i as usize)),
                         ),
                         Transform::from(vt),
+                        Visibility::default(),
                     ));
                 }
             });
